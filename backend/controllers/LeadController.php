@@ -50,6 +50,7 @@ class LeadController extends Controller
     public function actionIndex()
     {
         $searchModel = new LeadSearch();
+     
            
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

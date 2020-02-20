@@ -41,7 +41,7 @@ class LeadSearch extends Lead
      */
     public function search($params)
     {
-        $query = Lead::find();
+        $query = Lead::find()->orderBy("first_name ASC");
 
         // add conditions that should always apply here
 
