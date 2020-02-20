@@ -46,7 +46,16 @@ class SiteController extends Controller
        
         $model = new Lead();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->first_name =$_REQUEST['Lead']['first_name'];
+            $model->last_name=$_REQUEST['Lead']['last_name'];
+            $model->email =$_REQUEST['Lead']['email'];
+            $model->phone =$_REQUEST['Lead']['phone'];
+            $model->address =$_REQUEST['Lead']['address'];
+            $model->home_sqft =$_REQUEST['Lead']['home_sqft'];
+            $model->created_at = date('Y-m-d H:i:s');
+            $model->save();
             return $this->redirect('create');
         }
 
