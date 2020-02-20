@@ -7,20 +7,15 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\LeadSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Leads';
-$this->params['breadcrumbs'][] = $this->title;
+ $this->title = 'Leads List';
+ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="lead-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Lead', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <?= GridView::widget([
+    
+       <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -35,13 +30,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'yii\grid\ActionColumn',
                 'contentOptions' => ['style' => 'width:260px;'],
                 'header'=>'Actions',
-                'template' => '{view}',
+                'template' => '{view} {delete}',
                 'buttons' => [
         
                     //view button
                     'view' => function ($url, $model) {
                         return Html::a('<span class="fa fa-search"></span>View', $url, [
                                     'title' => Yii::t('app', 'View'),
+                                    'class'=>'btn btn-primary btn-xs',                                  
+                        ]);
+                    },
+                    'delete' => function ($url, $model) {
+                        return Html::a('<span class="fa fa-search"></span>Delete', $url, [
+                                    'title' => Yii::t('app', 'delete'),
                                     'class'=>'btn btn-primary btn-xs',                                  
                         ]);
                     },
