@@ -32,12 +32,12 @@ class Lead extends \yii\db\ActiveRecord
     {
         return [
             [['first_name', 'last_name', 'email', 'phone', 'address', 'home_sqft','created_at'], 'safe'],
-            [['home_sqft'], 'number'],
+            // [['home_sqft'], 'number'],
             // ['email','email'],
-            ['email','unique', 'targetClass' => '\common\models\Lead', 'message' => 'This email address has already been taken.'],
+            // ['email','unique', 'targetClass' => '\common\models\Lead', 'message' => 'This email address has already been taken.'],
             // [['first_name','last_name'], 'match', 'pattern' => '/^[a-z]\w*$/i'],
             // [['phone'],'match','pattern'=>  '/^[6-9][0-9]{9}$/' ],
-            [['first_name', 'last_name', 'email', 'phone', 'address','created_at'], 'string', 'max' => 200],
+            // [['first_name', 'last_name', 'email', 'phone', 'address','created_at'], 'string', 'max' => 200],
         ];
     }
 
