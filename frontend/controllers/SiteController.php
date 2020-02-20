@@ -40,29 +40,40 @@ class SiteController extends Controller
     }
     
 
-     public function actionIndex()
+    public function actionIndex()
     {
         
        
-        $model = new Lead();
+        $model = new Lead;
+    
+        if(isset($_REQUEST['Lead']) )
+         {
+           
+            
+            if(empty($_REQUEST['Lead']['first_name']) && empty($_REQUEST['Lead']['last_name']) && empty($_REQUEST['Lead']['email'])
+                && empty($_REQUEST['Lead']['phone']) && empty($_REQUEST['Lead']['address']) && empty($_REQUEST['Lead']['home_sqft']) )
+            {
+        
+                 return false;
 
-        if ($model->load(Yii::$app->request->post())) {
-
-            $model->first_name =$_REQUEST['Lead']['first_name'];
-            $model->last_name=$_REQUEST['Lead']['last_name'];
-            $model->email =$_REQUEST['Lead']['email'];
-            $model->phone =$_REQUEST['Lead']['phone'];
-            $model->address =$_REQUEST['Lead']['address'];
-            $model->home_sqft =$_REQUEST['Lead']['home_sqft'];
-            $model->created_at = date('Y-m-d H:i:s');
-            $model->save();
-            return $this->redirect('create');
+            }
+         else{
+       
+                $model->first_name =$_REQUEST['Lead']['first_name'];
+                $model->last_name=$_REQUEST['Lead']['last_name'];
+                $model->email =$_REQUEST['Lead']['email'];
+                $model->phone =$_REQUEST['Lead']['phone'];
+                $model->address =$_REQUEST['Lead']['address'];
+                $model->home_sqft =$_REQUEST['Lead']['home_sqft'];
+                $model->save();
+                        
+                return  true;
+             }
         }
-
-        return $this->render('create', [
+             return $this->render('index', [
             'model' => $model,
         ]);
-    }
-     
-}
 
+    }
+    
+}

@@ -64,7 +64,7 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Home', 'url' => ['/lead/index']],
         // ['label' => 'Create Leads', 'url' => ['/lead/create']],
 
 
