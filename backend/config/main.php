@@ -37,14 +37,24 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
+//       'request' => [
+//     'baseUrl' => '/admin',
+// ],
+'urlManager' => [
+    'enablePrettyUrl' => false,
+    'showScriptName' => false,
+    'rules' => [
+                'index' => 'site/index',                                
+      
+    ],
+],
+   'urlManagerFrontend' => [
+                'class' => 'yii\web\urlManager',
+                'baseUrl' => 'frontend/web/',
+                'enablePrettyUrl' => false,
+                'showScriptName' => false,
         ],
-        */
     ],
     'params' => $params,
+    'defaultRoute' => 'lead/index',
 ];
