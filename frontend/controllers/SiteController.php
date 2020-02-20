@@ -75,5 +75,9 @@ class SiteController extends Controller
         ]);
 
     }
+    public function actionResponse(){
+        return $this->render('response');
+
+    }
     
 }

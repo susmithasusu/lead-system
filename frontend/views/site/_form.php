@@ -46,7 +46,7 @@ jQuery(document).ready(function($){
                 data:$("#signup-form").serialize(),
                 success: function (response) {
                     document.getElementById("signup-form").reset();
-                  
+                    window.location.href = '<?php echo Yii::$app->getUrlManager()->createUrl("/site/response"); ?>';  
       
    
                 }
