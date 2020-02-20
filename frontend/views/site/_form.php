@@ -11,7 +11,9 @@ use yii\widgets\ActiveForm;
 <div class="lead-form">
 
     <?php $form = ActiveForm::begin([
-             'id'=>'signup-form']); ?>
+             'id'=>'signup-form',
+             'enableClientValidation'=> true,
+             'validateOnSubmit' =>true]); ?>
 
     <?= $form->field($model, 'first_name')->textInput(['style'=>'width:500px']) ?>
 
@@ -23,7 +25,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'address')->textInput(['style'=>'width:500px']) ?>
 
-    <?= $form->field($model, 'home_sqft')->textInput(['style'=>'width:500px']) ?>
+    <?= $form->field($model, 'home_sqft')->textInput(['style'=>'width:500px'])->label('Area of Land(in sqft)') ?>
 
     <div class="form-group">
     <button type="button" id="sub"  class="btn btn-primary" >Submit</button>
@@ -45,8 +47,15 @@ jQuery(document).ready(function($){
                 type: 'post',
                 data:$("#signup-form").serialize(),
                 success: function (response) {
-                    document.getElementById("signup-form").reset();
-                    window.location.href = '<?php echo Yii::$app->getUrlManager()->createUrl("/site/response"); ?>';  
+                    if(response==false)
+                    {
+                        document.getElementById("signup-form").reset();
+                        window.location.href = '<?php echo Yii::$app->getUrlManager()->createUrl("/site/index"); ?>';  
+                    }
+                    else{
+                        document.getElementById("signup-form").reset();
+                        window.location.href = '<?php echo Yii::$app->getUrlManager()->createUrl("/site/response"); ?>';
+                    }  
       
    
                 }
